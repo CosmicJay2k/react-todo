@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-export default function TaskInput(props) {
+export default function TaskInput({ onAdd, onClear }) {
   const [text, setText] = useState("");
 
   const onClickAdd = () => {
     setText("");
-    props.onAdd(text);
+    onAdd(text);
   };
 
   const onTextChange = (e) => {
@@ -13,7 +13,7 @@ export default function TaskInput(props) {
   };
 
   const onClickClear = () => {
-    props.onClear();
+    onClear();
   };
 
   return (
