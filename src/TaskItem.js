@@ -1,12 +1,7 @@
-export default function TaskItem(props) {
+export default function TaskItem({ label, completed }) {
   return (
     <li>
-      <span
-        className={props.completed ? "completed" : null}
-        onClick={props.onClick}
-      >
-        {props.label}
-      </span>
+      <span className={completed ? "completed" : null}>{label}</span>
       <span className="trashcan">🗑</span>
     </li>
   );
