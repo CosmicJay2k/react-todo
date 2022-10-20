@@ -9,7 +9,6 @@ export default function App() {
 
   const onAdd = (label) => {
     const time = new Date().getTime().toString();
-    console.log(time);
     setTasks([
       ...tasks,
       {
@@ -24,9 +23,16 @@ export default function App() {
     setTasks([]);
   };
 
+  const onItem = () => {
+    tasks.forEach((task, idx) => {
+      setTasks([
+        ...tasks.slice(0, idx),
+        { ...task, completed: !task.completed },
+        ...tasks.slice(idx + 1),
+      ]);
+    });
+  };
   const onTrash = (time) => {
-    console.log("trash clicked");
-    console.log(time);
     setTasks(tasks.filter((taskToTrash) => taskToTrash.time !== time));
   };
 
@@ -36,7 +42,7 @@ export default function App() {
         <h1>To Do for You</h1>
         <Counter tasks={tasks} />
         <TaskInput onAdd={onAdd} onClear={onClear} />
-        <TaskList tasks={tasks} onTrash={onTrash} />
+        <TaskList tasks={tasks} onTrash={onTrash} onItem={onItem} />
       </div>
     </div>
   );
