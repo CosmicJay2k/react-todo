@@ -1,6 +1,6 @@
 export default function TaskItem({ label, completed, time, onTrash, onItem }) {
   const onClickItem = () => {
-    onItem(label);
+    onItem(time);
   };
 
   const onClickTrash = () => {

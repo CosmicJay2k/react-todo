@@ -23,15 +23,18 @@ export default function App() {
     setTasks([]);
   };
 
-  const onItem = () => {
+  const onItem = (time) => {
     tasks.forEach((task, idx) => {
-      setTasks([
-        ...tasks.slice(0, idx),
-        { ...task, completed: !task.completed },
-        ...tasks.slice(idx + 1),
-      ]);
+      if (task.time === time) {
+        setTasks([
+          ...tasks.slice(0, idx),
+          { ...task, completed: !task.completed },
+          ...tasks.slice(idx + 1),
+        ]);
+      }
     });
   };
+
   const onTrash = (time) => {
     setTasks(tasks.filter((taskToTrash) => taskToTrash.time !== time));
   };
