@@ -1,12 +1,14 @@
 import TaskItem from "./TaskItem";
 
-export default function TaskList({ tasks }) {
+export default function TaskList({ tasks, onTrash }) {
   const taskElements = tasks.map((task) => {
     return (
       <TaskItem
-        key={task.label}
+        key={task.time}
+        time={task.time}
         label={task.label}
         completed={task.completed}
+        onTrash={onTrash}
       />
     );
   });
